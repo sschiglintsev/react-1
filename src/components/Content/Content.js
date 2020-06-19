@@ -11,7 +11,7 @@ const Content = (props) => {
             <img className={c.img} src='https://primpress.ru/img/articles/0210200446211dp.jpg' />
         </div>
 
-        <MyPost post={props.post.post} addPost={props.addPost} newPostText={props.newPostText} newTextPost={props.newTextPost.text}/>
+        <MyPost post={props.post.post} addPost={props.addPost} newPostText={props.newPostText} newTextPost={props.newTextPost}/>
     </div>
     );
 }

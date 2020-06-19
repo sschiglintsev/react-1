@@ -18,7 +18,7 @@ const MyPost = (props) => {
             <div className={c.h}>
                 New post
                 <div>
-                    <textarea onChange={newPostText} ref={newPost} value={props.newTextPost}></textarea>
+                    <textarea onChange={newPostText} ref={newPost} value={props.newTextPost.text}></textarea>
                 </div>
                 <div>
                     <button onClick={addPost}>Add</button>
