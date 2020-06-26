@@ -10,14 +10,13 @@ let renderTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={store.addPost.bind(store)} newPostText={store.newPostText.bind(store)}/>
+                <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 renderTree(store.getState());
-
 store.subscribe(renderTree);
 
 // If you want your app to work offline and load faster, you can change

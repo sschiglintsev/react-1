@@ -1,56 +1,53 @@
+import contentReducer from "./content-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
 let store = {
-    _state : {
-        dialogsPage : {
-            messages : [
-                {text:'HI'},
-                {text:'Yo'},
-                {text:'Bay'}
+    _state: {
+        dialogsPage: {
+            messages: [
+                {text: 'HI'},
+                {text: 'Yo'},
+                {text: 'Bay'}
             ],
-            dialogs : [
-                {id:1, name:'Sergey'},
-                {id:2, name:'Oleg'},
-                {id:3, name:'Masha'}
+            dialogs: [
+                {id: 1, name: 'Sergey'},
+                {id: 2, name: 'Oleg'},
+                {id: 3, name: 'Masha'}
+            ],
+            newMessageText: 'Message',
+        },
+        friendsPage: {
+            friends: [
+                {id: 1, name: 'Sergey'},
+                {id: 2, name: 'Oleg'},
+                {id: 3, name: 'Masha'}
             ]
         },
-        contentPage : {
-            post : [
-                {id:0, message:'Hi! How are you? bay!', likesCount:1},
-                {id:1, message:'Alena very good!!!', likesCount:2}
+        contentPage: {
+            newTextPost: 'New Post',
+            post: [
+                {id: 0, message: 'Hi! How are you? bay!', likesCount: 1},
+                {id: 1, message: 'Alena very good!!!', likesCount: 2}
             ]
-        },
-        newTextPost: {
-            text:'New Post'
         },
     },
-    getState () {
+    getState() {
         return this._state;
     },
-
-    addPost (postText) {
-        let postElement = {
-            id:2,
-            message:postText,
-            likesCount:5
-        }
-        this._state.contentPage.post.push(postElement);
-        this._state.newTextPost.text='';
-        this.renderTree(this._state);
-    },
-
-    newPostText (postText) {
-        this._state.newTextPost.text=postText;
-        this.renderTree(this._state);
-    },
-
-     renderTree () {
+    renderTree() {
         console.log('hi');
     },
+    subscribe(observer) {
+        this.renderTree = observer;
+    },
 
-    subscribe (observer)  {
-        this.renderTree=observer;
+    dispatch(action) {
+        this._state.contentPage = contentReducer(this._state.contentPage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this.renderTree(this._state);
+
     }
 }
-
-export default store;
+    export default store;
 
 

@@ -1,25 +1,25 @@
 import React from "react";
 import c from './Myposts.module.css'
 import Post from "./Post/Post";
+import {AddPostCreateAction, NewPostTextCreateAction} from "../../../Redux/content-reducer";
 
 const MyPost = (props) => {
-    let postElement = props.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let postElement = props.state.contentPage.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
     let newPost=React.createRef();
     let addPost =() => {
-        let text = newPost.current.value;
-        props.addPost(text);
+        props.dispatch(AddPostCreateAction());
     }
     let newPostText =() => {
         let text = newPost.current.value;
-        props.newPostText(text);
+        props.dispatch(NewPostTextCreateAction(text))
     }
     return (
         <div >
             <div className={c.h}>
                 New post
                 <div>
-                    <textarea onChange={newPostText} ref={newPost} value={props.newTextPost.text}></textarea>
-                </div>
+                <textarea onChange={newPostText} ref={newPost} value={props.state.contentPage.newTextPost}></textarea>
+            </div>
                 <div>
                     <button onClick={addPost}>Add</button>
                 </div>

@@ -1,13 +1,42 @@
-.navbar {
-    grid-area:navbar;
-    background-color: lemonchiffon;
-    padding: 10px;
+.navbarwrapper {
+    display: grid;
+    grid-template-areas: "items" "listfriends";
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1vw;
 }
+
+.navbar {
+    grid-area: items;
+    /* оконтовка*/
+    background-color: azure;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    color: #4a4a4a;
+    display: block;
+    padding: 1.25rem;
+}
+
+.listfriends {
+    grid-area: listfriends;
+    /* оконтовка*/
+    background-color: azure;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    color: #4a4a4a;
+    display: block;
+    padding: 1.25rem;
+
+}
+.listfriends h2 {
+    color: black;
+}
+
 .item a {
-    color:black;
+    color: black;
     text-decoration: none;
 
 }
+
 .item a.activLink {
     color: blue;
 }
