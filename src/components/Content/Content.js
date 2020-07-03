@@ -1,8 +1,6 @@
 import React from "react";
 import c from './Content.module.css'
-import MyPost from "./Myposts/Myposts";
-
-
+import MyPostContainer from "./Myposts/MypostsContainer";
 
 const Content = (props) => {
     return (
@@ -10,8 +8,7 @@ const Content = (props) => {
         <div>
             <img className={c.img} src='https://primpress.ru/img/articles/0210200446211dp.jpg' />
         </div>
-
-        <MyPost state={props.state} dispatch={props.dispatch}/>
+        <MyPostContainer store={props.store}/>
     </div>
     );
 }
