@@ -3,9 +3,9 @@ import c from './Friends.module.css'
 
 const Friends = (props) => {
     return (
-        <div>
-            <img className={c.img} src='https://vokrug.tv/pic/person/e/9/a/b/e9abb1b8929cede9f7058672f4b12556.jpeg' />
-            {props.friend}
+        <div key={props.id}>
+            <img className={c.img} src='https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-8.png' />
+            {props.name}
         </div>
     );
 }

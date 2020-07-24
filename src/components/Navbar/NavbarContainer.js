@@ -1,14 +1,17 @@
 import React from "react";
-import StoreContext from "../../StoreContext";
 import Navbar from "./Navbar";
+import {connect} from "react-redux";
 
-let NavbarContainer = () => {
-    return <StoreContext.Consumer>
-        {store => {
-            return <Navbar friends={store.getState().friendsPage.friends}/>
-        }
-        }
-    </StoreContext.Consumer>
+let mapStateToProps = (state) => {
+    return {
+        users:state.usersPage.users
+    }
 }
+let mapDispatchToProps = (dispatch) => {
+    return {
+    }
+}
+
+const NavbarContainer = connect(mapStateToProps,mapDispatchToProps)(Navbar);
 
 export default NavbarContainer;
